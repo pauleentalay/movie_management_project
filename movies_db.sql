@@ -107,7 +107,6 @@ INSERT INTO movie_actors_tbl VALUES
 (SELECT id FROM movies_tbl WHERE title like "The Dark Knight"),
 (SELECT id FROM main_actors_tbl WHERE name like "Christian Bale")
 ),
-INSERT INTO movie_actors_tbl VALUES
 (
 (SELECT id FROM movies_tbl WHERE title like "Inception"),
 (SELECT id FROM main_actors_tbl WHERE name like "Leonardo DiCarpio")
@@ -125,17 +124,14 @@ INSERT INTO movie_actors_tbl VALUES(
 (SELECT id FROM movies_tbl WHERE title like "Cleopatra"),
 (SELECT id FROM main_actors_tbl WHERE name like "Gal Gadot")    
 ),
-INSERT INTO movie_actors_tbl VALUES #Error 24-8 same
 (
 (SELECT id FROM movies_tbl WHERE title like "Eternals"),
 (SELECT id FROM main_actors_tbl WHERE name like "Gemma Chan")    
 ),
-INSERT INTO movie_actors_tbl VALUES
 (
 (SELECT id FROM movies_tbl WHERE title like "Titanic"),
 (SELECT id FROM main_actors_tbl WHERE name like "Leonardo DiCarpio")    
-);
-INSERT INTO movie_actors_tbl VALUES
+),
 (
 (SELECT id FROM movies_tbl WHERE title like "Wonder Woman"),
 (SELECT id FROM main_actors_tbl WHERE name like "Gal Gadot")    
@@ -143,8 +139,7 @@ INSERT INTO movie_actors_tbl VALUES
 (
 (SELECT id FROM movies_tbl WHERE title like "Terminator"),
 (SELECT id FROM main_actors_tbl WHERE name like "Arnold Schwarzenegger")    
-)
-INSERT INTO movie_actors_tbl VALUES
+),
 (
 (SELECT id FROM movies_tbl WHERE title like "Avatar"),
 (SELECT id FROM main_actors_tbl WHERE name like "Signourey Weaver")    
@@ -159,3 +154,4 @@ FROM movies_tbl
     JOIN main_actors_tbl ON main_actors_tbl.id = movie_actors_tbl.main_actor_id
 WHERE movies_tbl.title LIKE "AVATAR";
 
+DELETE FROM directors_tbl WHERE id=2;
