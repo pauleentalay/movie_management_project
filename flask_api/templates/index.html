@@ -4,10 +4,10 @@
 <div class="wrapper">
     <h1>Pascal's Movie Selection</h1>
 
-    <p>{{movie_count}} of movies found</p>
-
-    <button type="button" class="btn btn-success" href="{{ url_for('new-movie')}}">"add new movie"</button>
-    
+    <p>{{movie_count}} movies found</p>
+    <button>
+        <a role="button" class="btn btn-success" href="{{url_for('create_new_movie')}}">add new movie</a>
+        </button>
     {% for movie in movies_data %}
     <div class="card">
         <div class="poster">
