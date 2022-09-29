@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/6443749?v=4">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>{% block title %}{% endblock %} - Pascal's Movie Selection</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      <a>A Cloudreach Talent-Academy Project by Pauleen</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>

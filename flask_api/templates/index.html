@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="wrapper">
+    <h1>Pascal's Movie Selection</h1>
+
+    <p>{{movie_count}} movies found</p>
+    <button>
+        <a role="button" class="btn btn-success" href="{{url_for('create_new_movie')}}">add new movie</a>
+        </button>
+    {% for movie in movies_data %}
+    <div class="card">
+        <div class="poster">
+            <picture class="movie_poster"><img id="movie_pic" src=https://avatars.githubusercontent.com/u/79509008?v=4"</picture>
+            </div>
+        <div class="details">
+            <h3>{{movie[1]}}</h3>
+            <p>Released in: {{movie[2]}}</p>
+            <p>Directed by: {{movie[3]}}</p>
+            </div>
+        </div>    
+    {% endfor %}
+    </div>
+
+{% endblock %}
