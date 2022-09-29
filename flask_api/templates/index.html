@@ -1,20 +1,22 @@
 {% extends "layout.html" %}
-{% block head %}
 
-{% endblock %}<!--removed portions of template-->
 {% block content %}
-<table>
-    <th>Title</th>
-    <th>Release Year</th>
-    <th>Director</th>
-
+<div class="wrapper">
+    <h1>Pascal's Movie Selection</h1>
+    <p>{{movie_count}} of movies found</p>
+    <button type="button" class="btn btn-success">"add new movie"</button>
     {% for movie in movies_data %}
-    <tr>
-        <td>{{movie[1]}}</td>
-        <td>{{movie[2]}}</td>
-        <td>{{movie[3]}}</td>
-        </tr>
+    <div class="card">
+        <div class="poster">
+            <picture class="movie_poster"><img id="movie_pic" src=https://avatars.githubusercontent.com/u/79509008?v=4"</picture>
+            </div>
+        <div class="details">
+            <h3>{{movie[1]}}</h3>
+            <p>Released in: {{movie[2]}}</p>
+            <p>Directed by: {{movie[3]}}</p>
+            </div>
+        </div>    
     {% endfor %}
-    </table>
-    
+    </div>
+
 {% endblock %}

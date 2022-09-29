@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
-
 app = Flask(__name__)
 mysql = MySQL(app)
 app.config["MYSQL_HOST"] = "127.0.0.1"
@@ -24,7 +23,6 @@ def create_row(table, str_row, con):                                    # str_ro
     insert_string = f"INSERT INTO {table} VALUES{str_row}"
     cursor.execute(insert_string)
     cursor.close()
-
 
 @with_connection    
 def retrieve_all_contents(table_name, con):

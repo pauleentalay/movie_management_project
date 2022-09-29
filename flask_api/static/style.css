@@ -1,0 +1,15 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.movie_poster{
+    max-width: 10%;
+    height: 50%;
+}
