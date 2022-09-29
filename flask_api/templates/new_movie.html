@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+<!--fix bootstrap stuff-->
+
+{% block content %}
+    <div><h1>Add new movie to the list</h1></div>
+
+    <div>
+        <form id="add_movie_form" action="{{url_for('add_new_movie')}}" method="post">
+            <p>Enter movie details</p>
+            <input class="form-control form-control-lg" type="text" placeholder="Movie Title" name="movie_title">
+            <input class="form-control" type="text" placeholder="year released" name="release_year">
+            
+            <select class="form-control" type="text" placeholder="name of director" name="director">
+                <option disable selected>Select director</option>
+                {% for director in directors_data %}
+                <option value="{{director[0]}}">{{director[1]}}</option>
+                {% endfor %}
+                </select>
+
+            <select class="form-control" type="text" placeholder="name of main_actor" name="actor">
+                <option disable selected>Select main actor</option>
+                {% for actor in actors_data %}
+                    <option value="{{actor[0]}}">{{actor[1]}}</option>
+                {% endfor %}
+                </select>
+
+            <input class="form-control" type="text" placeholder="name of actor">
+            <input class="form-control" type="url" placeholder="link to poster">
+            
+            <button class="btn btn-success" type="submit">add movie</button>
+            </form>
+        </div>
+{% endblock %}

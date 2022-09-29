@@ -3,8 +3,11 @@
 {% block content %}
 <div class="wrapper">
     <h1>Pascal's Movie Selection</h1>
+
     <p>{{movie_count}} of movies found</p>
-    <button type="button" class="btn btn-success">"add new movie"</button>
+
+    <button type="button" class="btn btn-success" href="{{ url_for('new-movie')}}">"add new movie"</button>
+    
     {% for movie in movies_data %}
     <div class="card">
         <div class="poster">

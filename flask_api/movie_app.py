@@ -33,7 +33,7 @@ def retrieve_all_contents(table_name, con):
     cursor.close()
     return data                                                         # json good for api
 
-                                       
+
 #DELETE FROM directors_tbl WHERE id=2;
 @with_connection
 @app.route("/")
@@ -46,7 +46,7 @@ def list_movie_table():
 def create_new_movie():
     tables = ["movies_tbl", "directors_tbl", "main_actors_tbl"]
     movies_data, directors_data, actors_data = (retrieve_all_contents(table) for table in tables)
-    return render_template("new-movie.html", movies_data=movies_data, directors_data=directors_data, actors_data=actors_data)           
+    return render_template("new_movie.html", movies_data=movies_data, directors_data=directors_data, actors_data=actors_data)           
 
 @with_connection
 @app.route("/add-movie", methods=['POST'])
@@ -54,10 +54,10 @@ def add_new_movie():
     # from the form
     title = request.form['movie_title']                                   #json as well?
     release_year = request.form['release_year']
-    director_id = request.form['director_id']
+    director = request.form['director']
 
     #insert in movies_tbl
-    movies_val = f"(null, {title}, {release_year}, {director_id})"
+    movies_val = f"(null, {title}, {release_year}, {director})"
     create_row("movies_tbl", movies_val)
 
     #insert main_actors
