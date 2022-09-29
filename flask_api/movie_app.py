@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
+import json
 
 app = Flask(__name__)
 mysql = MySQL(app)
@@ -33,13 +34,12 @@ def retrieve_all_contents(table_name, con):
     cursor.close()
     return data                                                         # json good for api
 
-
-#DELETE FROM directors_tbl WHERE id=2;
 @with_connection
 @app.route("/")
 def list_movie_table():
     movies_data = retrieve_all_contents("movies_tbl")
-    return render_template("index.html", movies_data=movies_data)         #standard module, no installation required
+    movie_count = len(movies_data)
+    return render_template("index.html", movies_data=movies_data, movie_count=movie_count)         #standard module, no installation required
 
 @with_connection
 @app.route("/new-movie")
@@ -56,32 +56,18 @@ def add_new_movie():
     release_year = request.form['release_year']
     director = request.form['director']
 
-    #insert in movies_tbl
-    movies_val = f"(null, {title}, {release_year}, {director})"
+    # insert in movies_tbl
+    movies_val = f'(null, "{title}", {release_year}, {director})'
     create_row("movies_tbl", movies_val)
 
     #insert main_actors
-    actors_val = f"(new_movie_id, actor_id)"
-    create_row("main_actors_tbl", actors_val)
+    last_movie_id = retrieve_all_contents("movies_tbl")[-1][0]
+    actor_id = request.form['actor']
+    actors_val = f"({last_movie_id}, {actor_id})"
+    create_row("movie_actors_tbl", actors_val)
 
-    return list_movie_table()
-
-"""@with_connection
-def update_table(con, table_name):
-    return
-
-@with_connection
-def delete_table(con, table_name, condition):
-
-@app.route('/movies/create')
-def create():
-    insert('movies_tbl', "(null, 'TalentAcademy', 2022, 3)")
-    return json.dumps()         # should flash message that value was inserted
-
-#@app.route('/movies/delete' , methods = ['GET','POST'])
-#def delete():
-#    cursor
-"""
+    #go back to main page and view
+    return redirect(url_for("list_movie_table"))
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
